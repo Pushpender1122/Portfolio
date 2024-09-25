@@ -27,7 +27,7 @@ import contact from './contact.svg'
 import soundon from './soundon.png'
 import soundoff from './soundoff.png'
 import cpp from './cpp.svg'
-import clanguage from './c.svg'
+import clanguage from './clan.svg'
 export {
     clanguage,
     cpp,
