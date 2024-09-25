@@ -11,15 +11,17 @@ import Info from '../components/Info.jsx'
 import { soundoff, soundon } from "../assets/icons";
 import sakura from '../assets/sakura.mp3'
 import Zoom from '../models/zoom.jsx'
+import { useCurrentDetails } from '../context/getCurrentDetails.jsx'
 const Home = () => {
     const audioRef = useRef(new Audio(sakura));
     audioRef.current.volume = 0.4;
     audioRef.current.loop = true;
     const [isRotating, setIsRotating] = useState(false);
-    const [currentStage, setCurrentStage] = useState(1);
+    // const [currentStage, setCurrentStage] = useState(1);
     const [isPlayingMusic, setIsPlayingMusic] = useState(false);
-    const [cameraPosition, setCameraPosition] = useState([0, 0, 200]);
+    // const [cameraPosition, setCameraPosition] = useState([0, 0, 200]);
     const [showZoom, setShowZoom] = useState(true);
+    const { currentStage, setCurrentStage, cameraPosition, setCameraPosition } = useCurrentDetails()
     useEffect(() => {
         if (isPlayingMusic) {
             audioRef.current.play();
@@ -84,7 +86,7 @@ const Home = () => {
                         groundColor='#000000'
                         intensity={1}
                     />
-                    {showZoom && <Zoom setShowZoom={setShowZoom} />}
+                    {showZoom && <Zoom setShowZoom={setShowZoom} setCameraPosition={setCameraPosition} />}
                     <Bird />
                     <Plane
                         scale={biplaneScale}

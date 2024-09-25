@@ -8,8 +8,11 @@ import { experiences, skills } from "../constants";
 
 import "react-vertical-timeline-component/style.min.css";
 import CTA from "../components/CTA";
+import { useCurrentDetails } from "../context/getCurrentDetails";
 
 const About = () => {
+    const { setFirstTime } = useCurrentDetails()
+    setFirstTime(false)
     return (
         <section className='max-container'>
             <h1 className='head-text'>

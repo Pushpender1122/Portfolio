@@ -11,16 +11,23 @@ import { useGLTF } from '@react-three/drei'
 import islandScene from '../assets/3d/island.glb'
 import { a } from "@react-spring/three";//a is a shorthand for animated
 import { useFrame, useThree } from '@react-three/fiber';
+import { useCurrentDetails } from '../context/getCurrentDetails';
 
 const Island = ({ setIsRotating, isRotating, setCurrentStage,
     currentFocusPoint, ...props }) => {
+    const { isFirstTime } = useCurrentDetails()
+    var speedFactor = 0.3;
+    if (isFirstTime) {
+        speedFactor = 0.3;
+    } else {
+        speedFactor = 0.01;
+    }
     const islandRef = useRef();
     const { nodes, materials } = useGLTF(islandScene)
     const { gl, viewport } = useThree();
     const lastX = useRef(0);
     const rotationSpeed = useRef(0);
     const dampingFactor = 0.95;
-
     const handlePointerMove = (event) => {
         event.stopPropagation();
         event.preventDefault();
@@ -29,10 +36,10 @@ const Island = ({ setIsRotating, isRotating, setCurrentStage,
 
             // relative to the viewport's width
             const delta = (clientX - lastX.current) / viewport.width;
-            islandRef.current.rotation.y += delta * 0.3 * Math.PI;
+            islandRef.current.rotation.y += delta * speedFactor * Math.PI;
             lastX.current = clientX;
 
-            rotationSpeed.current = delta * 0.3 * Math.PI;
+            rotationSpeed.current = delta * speedFactor * Math.PI;
         }
     };
     const handlePointerUp = (event) => {

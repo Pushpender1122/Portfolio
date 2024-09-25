@@ -3,8 +3,11 @@ import { Link } from "react-router-dom";
 import CTA from "../components/CTA";
 import { projects } from "../constants";
 import { arrow } from "../assets/icons";
+import { useCurrentDetails } from "../context/getCurrentDetails";
 
 const Projects = () => {
+    const { setFirstTime } = useCurrentDetails()
+    setFirstTime(false)
     return (
         <section className='max-container'>
             <h1 className='head-text'>

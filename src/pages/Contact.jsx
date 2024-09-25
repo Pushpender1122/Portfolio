@@ -5,10 +5,13 @@ import { Suspense, useRef, useState } from "react";
 import Fox from "../models/Fox";
 import useAlert from "../hooks/useAlert";
 import Alert from "../components/Alert";
+import { useCurrentDetails } from "../context/getCurrentDetails";
 // import useAlert from "../hooks/useAlert";
 // import { Alert, Loader } from "../components";
 
 const Contact = () => {
+    const { setFirstTime } = useCurrentDetails()
+    setFirstTime(false)
     const formRef = useRef();
     const [form, setForm] = useState({ name: "", email: "", message: "" });
     const { alert, showAlert, hideAlert } = useAlert();
