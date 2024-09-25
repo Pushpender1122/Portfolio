@@ -14,7 +14,7 @@ const Projects = () => {
                 </span>
             </h1>
 
-            <p className='text-slate-500 mt-2 leading-relaxed'>
+            <p className='text-black-700 mt-2 leading-relaxed'>
                 I've worked on numerous exciting projects, and I'm thrilled to showcase them here. Feel free to explore the features, share your feedback, and contribute ideas for further improvements. Your input is highly appreciated!
             </p>
 
@@ -43,7 +43,7 @@ const Projects = () => {
                                     target='_blank'
                                     rel='noopener noreferrer'
                                     className='font-semibold text-blue-600'
-                                >
+                                > 
                                     Live Link
                                 </Link>
                                 <img
