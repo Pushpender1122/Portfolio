@@ -21,7 +21,7 @@ const About = () => {
                 👋
             </h1>
 
-            <div className='mt-5 flex flex-col gap-3 text-slate-500'>
+            <div className='mt-5 flex flex-col gap-3 text-slate-600'>
                 <p>
                     Full-stack Developer, specializing in technical education through hands-on learning and website development.
                 </p>
@@ -93,7 +93,7 @@ const About = () => {
                                     {experience.points.map((point, index) => (
                                         <li
                                             key={`experience-point-${index}`}
-                                            className='text-black-500/50 font-normal pl-1 text-sm'
+                                            className='text-black-600/50 font-normal pl-1 text-sm'
                                         >
                                             {point}
                                         </li>
