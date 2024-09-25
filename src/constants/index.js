@@ -25,7 +25,7 @@ import {
     threads,
     typescript,
     cpp,
-    c
+    clanguage
 } from "../assets/icons";
 
 export const skills = [
@@ -85,7 +85,7 @@ export const skills = [
         type: "Programming Language",
     },
     {
-        imageUrl: c,
+        imageUrl: clanguage,
         name: "C",
         type: "Programming Language",
     },
