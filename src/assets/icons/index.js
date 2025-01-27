@@ -28,6 +28,9 @@ import soundon from './soundon.png'
 import soundoff from './soundoff.png'
 import cpp from './cpp.svg'
 import clanguage from './clan.svg'
+import aws from './aws.jpg'
+import redis from './redis.png'
+import docker from './docker.png'
 export {
     clanguage,
     cpp,
@@ -58,5 +61,8 @@ export {
     arrow,
     contact,
     soundon,
-    soundoff
+    soundoff,
+    aws,
+    redis,
+    docker
 }

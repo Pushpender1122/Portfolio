@@ -69,7 +69,7 @@ const About = () => {
                                         <img
                                             src={experience.icon}
                                             alt={experience.company_name}
-                                            className='w-[60%] h-[60%] object-contain'
+                                            className='object-contain rounded-full'
                                         />
                                     </div>
                                 }
@@ -96,7 +96,7 @@ const About = () => {
                                     {experience.points.map((point, index) => (
                                         <li
                                             key={`experience-point-${index}`}
-                                            className='text-black-500/50 font-normal pl-1 text-sm'
+                                            className='text-black-500/75 font-normal pl-1 text-sm'
                                         >
                                             {point}
                                         </li>

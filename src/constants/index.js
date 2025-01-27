@@ -1,4 +1,4 @@
-import { hackathon, cipher } from "../assets/images";
+import { hackathon, cipher, jtbs, lpu } from "../assets/images";
 import {
     chrome,
     contact,
@@ -25,10 +25,43 @@ import {
     threads,
     typescript,
     cpp,
-    clanguage
+    clanguage,
+    aws,
+    redis,
+    docker
 } from "../assets/icons";
 
 export const skills = [
+    {
+        imageUrl: aws,
+        name: "AWS",
+        type: "Cloud Services",
+    },
+    {
+        imageUrl: nextjs,
+        name: "Next.js",
+        type: "Frontend",
+    },
+    {
+        imageUrl: typescript,
+        name: "TypeScript",
+        type: "Backend",
+    },
+    {
+        imageUrl: redux,
+        name: "Redux",
+        type: "State Management",
+    },
+    {
+        imageUrl: redis,
+        name: "Redis",
+        type: "Database",
+    },
+    {
+        imageUrl: docker,
+        name: "Docker",
+        type: "Containerization",
+    },
     {
         imageUrl: css,
         name: "CSS",
@@ -93,6 +126,33 @@ export const skills = [
 ];
 
 export const experiences = [
+    {
+        title: "Software Engineer Intern",
+        company_name: "Lovely Professional University",
+        icon: lpu,
+        iconBg: "#F5F7F9",
+        date: "Jan 2025 - Present",
+        points: [
+            "Contributed to building a User Management System (UMS) using Next.js for the front-end, focusing on user onboarding,profile management, and role-based access control.",
+            "Collaborated with cross-functional teams to enhance system scalability, security, and performance. ",
+            "Designed and implemented core features such as user onboarding, profile management, and role-based access control.",
+        ],
+
+    },
+    {
+        title: "Full Stack Developer (Freelance)",
+        company_name: "Freelance",
+        icon: jtbs,
+        iconBg: "#000000",
+        date: "Dec 2024 - Jan 2024",
+        points: [
+            "Developed a comprehensive web platform for a Canadian client, enhancing their digital presence and enabling seamless online interactions.",
+            "Utilized React for the front-end, and Node.js with MongoDB for the back-end to ensure scalability and performance.",
+            "Integrated secure payment gateways, optimized user experience, and ensured smooth functionality across all devices.",
+            "Delivered a high-quality product within the stipulated timeline, maintaining strong communication with the client throughout the project.",
+        ],
+
+    },
     {
         title: "ARENA (WEB - A - THON)",
         company_name: "Hackathon",
