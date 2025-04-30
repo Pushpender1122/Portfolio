@@ -144,7 +144,7 @@ export const experiences = [
         company_name: "Freelance",
         icon: jtbs,
         iconBg: "#000000",
-        date: "Dec 2024 - Jan 2024",
+        date: "Dec 2024 - Jan 2025",
         points: [
             "Developed a comprehensive web platform for a Canadian client, enhancing their digital presence and enabling seamless online interactions.",
             "Utilized React for the front-end, and Node.js with MongoDB for the back-end to ensure scalability and performance.",
