@@ -14,7 +14,7 @@ import { useFrame, useThree } from '@react-three/fiber';
 import { useCurrentDetails } from '../context/getCurrentDetails';
 
 const Island = ({ setIsRotating, isRotating, setCurrentStage,
-    currentFocusPoint, ...props }) => {
+    currentFocusPoint, islandRef, ...props }) => {
     const { isFirstTime } = useCurrentDetails()
     var speedFactor = 0.3;
     if (isFirstTime) {
@@ -22,7 +22,7 @@ const Island = ({ setIsRotating, isRotating, setCurrentStage,
     } else {
         speedFactor = 0.01;
     }
-    const islandRef = useRef();
+
     const { nodes, materials } = useGLTF(islandScene)
     const { gl, viewport } = useThree();
     const lastX = useRef(0);
@@ -33,9 +33,9 @@ const Island = ({ setIsRotating, isRotating, setCurrentStage,
         event.preventDefault();
         if (isRotating) {
             const clientX = event.touches ? event.touches[0].clientX : event.clientX;
-
             // relative to the viewport's width
             const delta = (clientX - lastX.current) / viewport.width;
+
             islandRef.current.rotation.y += delta * speedFactor * Math.PI;
             lastX.current = clientX;
 
@@ -59,7 +59,6 @@ const Island = ({ setIsRotating, isRotating, setCurrentStage,
     const handleKeyDown = (event) => {
         if (event.key === "ArrowLeft") {
             if (!isRotating) setIsRotating(true);
-
             islandRef.current.rotation.y += 0.005 * Math.PI;
             rotationSpeed.current = 0.007;
         } else if (event.key === "ArrowRight") {

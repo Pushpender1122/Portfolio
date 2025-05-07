@@ -26,7 +26,7 @@ const About = () => {
 
             <div className='mt-5 flex flex-col gap-3 text-slate-500'>
                 <p>
-                    Full-stack Developer, specializing in technical education through hands-on learning and website development.
+                    Full Stack Developer working freelance and as an SDE Intern at LPU.
                 </p>
             </div>
 
@@ -35,7 +35,11 @@ const About = () => {
 
                 <div className='mt-16 flex flex-wrap gap-12'>
                     {skills.map((skill) => (
-                        <div className='block-container w-20 h-20' key={skill.name}>
+                        <div
+                            className='block-container w-20 h-20 relative group'
+                            key={skill.name}
+                            title={skill.name} // Simple HTML tooltip
+                        >
                             <div className='btn-back rounded-xl' />
                             <div className='btn-front rounded-xl flex justify-center items-center'>
                                 <img
@@ -43,6 +47,9 @@ const About = () => {
                                     alt={skill.name}
                                     className='w-1/2 h-1/2 object-contain'
                                 />
+                            </div>
+                            <div className='opacity-0 group-hover:opacity-100 transition-opacity duration-300 absolute -bottom-7 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded whitespace-nowrap'>
+                                {skill.name}
                             </div>
                         </div>
                     ))}
@@ -53,7 +60,7 @@ const About = () => {
                 <h3 className='subhead-text'> Experience</h3>
                 <div className='mt-5 flex flex-col gap-3 text-slate-500'>
                     <p>
-                        I have developed my skills through intensive hackathons and a full-stack certification, working alongside talented individuals to create impactful projects. Here’s a summary of my experiences:
+                        I have developed my skills through intensive hackathons and a full-stack certification, working alongside talented individuals to create impactful projects. Here's a summary of my experiences:
                     </p>
                 </div>
 
