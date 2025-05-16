@@ -158,7 +158,7 @@ const Home = () => {
                     onTouchStart={() => startRepeating(handleLeftArrowClick)}
                     onTouchEnd={stopRepeating}
                 >
-                    <FaArrowLeft size={22} />
+                    <FaArrowLeft size={40} />
                 </button>
                 <button
                     className="cursor-pointer ml-6"
@@ -168,7 +168,7 @@ const Home = () => {
                     onTouchStart={() => startRepeating(handleRightArrowClick)}
                     onTouchEnd={stopRepeating}
                 >
-                    <FaArrowRight size={22} />
+                    <FaArrowRight size={40} />
                 </button>
             </div>
             <div className='absolute bottom-2 left-2' >
