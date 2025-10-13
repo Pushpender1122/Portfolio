@@ -9,10 +9,13 @@ import { experiences, skills } from "../constants";
 import "react-vertical-timeline-component/style.min.css";
 import CTA from "../components/CTA";
 import { useCurrentDetails } from "../context/getCurrentDetails";
+import { useEffect } from "react";
 
 const About = () => {
     const { setFirstTime } = useCurrentDetails()
-    setFirstTime(false)
+    useEffect(() => {
+        setFirstTime(false)
+    }, [])
     return (
         <section className='max-container'>
             <h1 className='head-text'>
@@ -68,7 +71,7 @@ const About = () => {
                     <VerticalTimeline>
                         {experiences.map((experience, index) => (
                             <VerticalTimelineElement
-                                key={experience.company_name}
+                                key={index}
                                 date={experience.date}
                                 iconStyle={{ background: experience.iconBg }}
                                 icon={

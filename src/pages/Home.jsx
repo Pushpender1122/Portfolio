@@ -29,6 +29,12 @@ const Home = () => {
     const [showZoom, setShowZoom] = useState(true);
 
     const { currentStage, setCurrentStage, cameraPosition, setCameraPosition } = useCurrentDetails()
+    const currentStageRef = useRef(currentStage);
+
+    useEffect(() => {
+        currentStageRef.current = currentStage;
+    }, [currentStage]);
+
     useEffect(() => {
         if (isPlayingMusic) {
             audioRef.current.play();
@@ -95,6 +101,83 @@ const Home = () => {
             islandRef.current.rotation.y -= delta * speedFactor * Math.PI;
         }
     }
+    const handleRightArrowOneClick = () => {
+        if (islandRef.current) {
+            const canvas = document.querySelector('canvas');
+            if (canvas) {
+                canvas.style.pointerEvents = 'none';
+            }
+            const enableTouch = () => {
+                canvas.style.pointerEvents = 'auto';
+            };
+            const targetStage = currentStage === 4 ? 1 : currentStage + 1;
+
+            // Start the rotation immediately
+            startRepeating(handleRightArrowClick);
+
+            const checkStage = () => {
+                if (currentStage === 4 && targetStage === 1) {
+                    // For going from stage 4 to 1, check if we've reached stage 1
+                    if (currentStageRef.current === 1) {
+                        enableTouch()
+                        stopRepeating();
+                    } else {
+                        requestAnimationFrame(checkStage);
+                    }
+                } else {
+                    // For normal progression, check if we've reached or passed the target
+                    if (currentStageRef.current >= targetStage) {
+                        enableTouch()
+                        stopRepeating();
+                    } else {
+                        requestAnimationFrame(checkStage);
+                    }
+                }
+            };
+
+            // Start checking the stage
+            requestAnimationFrame(checkStage);
+        }
+    }
+    const handleLeftArrowOneClick = () => {
+        if (islandRef.current) {
+            // Disable touch events on the canvas during rotation
+            const canvas = document.querySelector('canvas');
+            if (canvas) {
+                canvas.style.pointerEvents = 'none';
+            }
+            const enableTouch = () => {
+                canvas.style.pointerEvents = 'auto';
+            };
+            const targetStage = currentStage === 1 ? 4 : currentStage - 1;
+
+            // Start the rotation immediately
+            startRepeating(handleLeftArrowClick);
+
+            const checkStage = () => {
+                if (currentStage === 1 && targetStage === 4) {
+                    // For going from stage 1 to 4, check if we've reached stage 4
+                    if (currentStageRef.current === 4) {
+                        enableTouch();
+                        stopRepeating();
+                    } else {
+                        requestAnimationFrame(checkStage);
+                    }
+                } else {
+                    // For normal progression, check if we've reached the target
+                    if (currentStageRef.current === targetStage) {
+                        enableTouch();
+                        stopRepeating();
+                    } else {
+                        requestAnimationFrame(checkStage);
+                    }
+                }
+            };
+
+            // Start checking the stage
+            requestAnimationFrame(checkStage);
+        }
+    }
 
     const [biplaneScale, biplanePosition] = adjustBiplaneForScreenSize();
     const [screenScale, screenPosition, rotation] = adjustIslandForScreenSize();
@@ -151,26 +234,44 @@ const Home = () => {
             </section >
             <div className='absolute bottom-5 left-0 right-0 z-10 flex items-center justify-center  px-4 py-2'>
                 <button
+                    className={`cursor-pointer ${isRotating ? 'opacity-50 cursor-not-allowed' : ''}`}
+                    onClick={handleLeftArrowOneClick}
+                    disabled={isRotating}
+                >
+                    <FaArrowLeft size={40} />
+                </button>
+                <button
+                    className={`cursor-pointer ml-6 ${isRotating ? 'opacity-50 cursor-not-allowed' : ''}`}
+                    onClick={handleRightArrowOneClick}
+                    disabled={isRotating}
+                >
+                    <FaArrowRight size={40} />
+                </button>
+                {/* Old button */}
+                {/* <button
                     className="cursor-pointer"
-                    onMouseDown={() => startRepeating(handleLeftArrowClick)}
-                    onMouseUp={stopRepeating}
-                    onMouseLeave={stopRepeating}
-                    onTouchStart={() => startRepeating(handleLeftArrowClick)}
-                    onTouchEnd={stopRepeating}
+                    // onMouseDown={() => startRepeating(handleLeftArrowClick)}
+                    // onMouseUp={stopRepeating}
+                    // onMouseLeave={stopRepeating}
+                    // onTouchStart={() => startRepeating(handleLeftArrowClick)}
+                    // onTouchEnd={stopRepeating}
+                    onClick={handleLeftArrowOneClick}
                 >
                     <FaArrowLeft size={40} />
                 </button>
                 <button
                     className="cursor-pointer ml-6"
-                    onMouseDown={() => startRepeating(handleRightArrowClick)}
-                    onMouseUp={stopRepeating}
-                    onMouseLeave={stopRepeating}
-                    onTouchStart={() => startRepeating(handleRightArrowClick)}
-                    onTouchEnd={stopRepeating}
+                    // onMouseDown={() => startRepeating(handleRightArrowClick)}
+                    // onMouseUp={stopRepeating}
+                    // onMouseLeave={stopRepeating}
+                    // onTouchStart={() => startRepeating(handleRightArrowClick)}
+                    // onTouchEnd={stopRepeating}
+                    onClick={handleRightArrowOneClick}
                 >
                     <FaArrowRight size={40} />
-                </button>
+                </button> */}
             </div>
+
             <div className='absolute bottom-2 left-2' >
                 <img
                     src={!isPlayingMusic ? soundoff : soundon}
@@ -180,7 +281,6 @@ const Home = () => {
                 />
             </div>
         </>
-
     )
 }
 

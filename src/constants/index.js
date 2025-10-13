@@ -127,11 +127,23 @@ export const skills = [
 
 export const experiences = [
     {
+        title: "Deputy Software Engineer",
+        company_name: "Lovely Professional University",
+        icon: lpu,
+        iconBg: "#F5F7F9",
+        date: "Jul 2025 - Present",
+        points: [
+            "Collaborated with a team to build and maintain web applications using Next.js and .NET Core.",
+            "Improved API performance by optimizing endpoints and reducing response latency.",
+            "Boosted code quality, security, and performance by conducting thorough code reviews, refactoring modules, and enforcing clean coding standards.",
+        ],
+    },
+    {
         title: "Software Engineer Intern",
         company_name: "Lovely Professional University",
         icon: lpu,
         iconBg: "#F5F7F9",
-        date: "Jan 2025 - Present",
+        date: "Jan 2025 - Jun 2025",
         points: [
             "Contributed to building a User Management System (UMS) using Next.js for the front-end, focusing on user onboarding,profile management, and role-based access control.",
             "Collaborated with cross-functional teams to enhance system scalability, security, and performance. ",
